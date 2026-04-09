@@ -1,6 +1,6 @@
 {
   "name": "@0x0pharaoh/next-paystack",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This is an nextJS library for implementing paystack payment gateway",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
