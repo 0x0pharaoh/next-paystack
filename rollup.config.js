@@ -6,6 +6,7 @@ const pkg = require('./package.json');
 
 module.exports = {
   input: 'libs/index.ts',
+  external: ['@paystack/inline-js'],
   output: [
     {
       file: pkg.main,
@@ -13,7 +14,6 @@ module.exports = {
       exports: 'named',
       sourcemap: true,
       banner: '"use client";',
-      inlineDynamicImports: true,
     },
     {
       file: pkg.module,
@@ -21,7 +21,6 @@ module.exports = {
       exports: 'named',
       sourcemap: true,
       banner: '"use client";',
-      inlineDynamicImports: true,
     },
   ],
   plugins: [
