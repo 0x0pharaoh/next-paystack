@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode, ReactElement } from 'react';
 import { callback, PaystackProps } from './types';
 interface PaystackButtonProps extends PaystackProps {
     text?: string;
@@ -8,5 +8,5 @@ interface PaystackButtonProps extends PaystackProps {
     onSuccess?: callback;
     onClose?: callback;
 }
-declare const PaystackButton: ({ text, className, children, onSuccess, onClose, disabled, ...config }: PaystackButtonProps) => JSX.Element;
+declare const PaystackButton: ({ text, className, children, onSuccess, onClose, disabled, ...config }: PaystackButtonProps) => ReactElement;
 export default PaystackButton;

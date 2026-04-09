@@ -29,9 +29,19 @@ export default [
   pluginReact.configs.flat.recommended,
   eslintPluginPrettierRecommended,
   {
-    ignores: ['example/', 'dist/', 'babel.config.js', 'jest.config.js'],
+    ignores: [
+      'example/',
+      'dist/',
+      'babel.config.js',
+      'jest.config.js',
+      'rollup.config.js',
+      'rollup.config-*.cjs',
+    ],
   },
   {
+    settings: {
+      react: {version: 'detect'},
+    },
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/camelcase': 'off',
@@ -39,6 +49,8 @@ export default [
       '@typescript-eslint/ban-ts-ignore': 'off',
       '@typescript-eslint/interface-name-prefix': 'off',
       '@typescript-eslint/ban-ts-comment': 'off',
+      'react/react-in-jsx-scope': 'off',
+      'react/jsx-uses-react': 'off',
     },
   },
 ];

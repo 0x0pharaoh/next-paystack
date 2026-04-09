@@ -1,6 +1,5 @@
-import {renderHook, cleanup} from '@testing-library/react-hooks';
-import {render, fireEvent} from '@testing-library/react';
-import React, {act} from 'react';
+import React from 'react';
+import {renderHook, cleanup, render, fireEvent, act} from '@testing-library/react';
 import usePaystackPayment from '../use-paystack';
 import {callPaystackPop} from '../paystack-actions';
 import {config} from './fixtures';
@@ -193,9 +192,7 @@ describe('usePaystackPayment()', () => {
   });
 
   it('should accept being rendered in a container', () => {
-    const wrapper: React.FC = ({children}: Record<string, any>) => {
-      return <div>{children}</div>;
-    };
+    const wrapper = ({children}: {children: React.ReactNode}): JSX.Element => <div>{children}</div>;
 
     const {result, rerender} = renderHook(() => usePaystackPayment(config), {wrapper});
 

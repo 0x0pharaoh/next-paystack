@@ -1,8 +1,9 @@
+import type { ReactElement } from 'react';
 import { callback, PaystackProps } from './types';
 interface PaystackProviderProps extends PaystackProps {
-    children: JSX.Element;
+    children: ReactElement;
     onSuccess: callback;
     onClose: callback;
 }
-declare const PaystackProvider: ({ children, onSuccess, onClose, ...config }: PaystackProviderProps) => JSX.Element;
+declare const PaystackProvider: ({ children, onSuccess, onClose, ...config }: PaystackProviderProps) => ReactElement;
 export default PaystackProvider;

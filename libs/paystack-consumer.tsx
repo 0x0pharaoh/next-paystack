@@ -1,4 +1,5 @@
-import React, {forwardRef, useContext, FunctionComponentElement} from 'react';
+import {forwardRef, useContext} from 'react';
+import type {FunctionComponentElement, ReactElement} from 'react';
 import PaystackProvider from './paystack-provider';
 import {PaystackProps} from './types';
 import PaystackContext from './paystack-context';
@@ -27,7 +28,7 @@ const PaystackConsumer = forwardRef(
   (
     {children, onSuccess: paraSuccess, onClose: paraClose, ...others}: PaystackConsumerProps,
     ref: any,
-  ): JSX.Element => {
+  ): ReactElement => {
     const onSuccess = paraSuccess ? paraSuccess : (): any => null;
     const onClose = paraClose ? paraClose : (): any => null;
     return (

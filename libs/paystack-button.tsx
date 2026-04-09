@@ -1,4 +1,4 @@
-import React, {ReactNode} from 'react';
+import type {ReactNode, ReactElement} from 'react';
 import usePaystackPayment from './use-paystack';
 import {callback, PaystackProps} from './types';
 
@@ -19,7 +19,7 @@ const PaystackButton = ({
   onClose,
   disabled,
   ...config
-}: PaystackButtonProps): JSX.Element => {
+}: PaystackButtonProps): ReactElement => {
   const initializePayment = usePaystackPayment(config);
 
   return (

@@ -1,12 +1,10 @@
-import typescript from 'rollup-plugin-typescript2';
-import commonjs from '@rollup/plugin-commonjs';
-import external from 'rollup-plugin-peer-deps-external';
-import resolve from '@rollup/plugin-node-resolve';
-import pkg from './package.json';
-//import * as react from 'react';
-//import * as reactDom from 'react-dom';
+const typescript = require('@rollup/plugin-typescript');
+const commonjs = require('@rollup/plugin-commonjs');
+const external = require('rollup-plugin-peer-deps-external');
+const {nodeResolve} = require('@rollup/plugin-node-resolve');
+const pkg = require('./package.json');
 
-export default {
+module.exports = {
   input: 'libs/index.ts',
   output: [
     {
@@ -14,20 +12,23 @@ export default {
       format: 'cjs',
       exports: 'named',
       sourcemap: true,
+      banner: '"use client";',
+      inlineDynamicImports: true,
     },
     {
       file: pkg.module,
       format: 'es',
       exports: 'named',
       sourcemap: true,
+      banner: '"use client";',
+      inlineDynamicImports: true,
     },
   ],
   plugins: [
     external(),
-    resolve(),
-    typescript({
-      rollupCommonJSResolveHack: true,
-      clean: true,
+    typescript({tsconfig: './tsconfig.rollup.json'}),
+    nodeResolve({
+      extensions: ['.mjs', '.js', '.jsx', '.json', '.node', '.ts', '.tsx'],
     }),
     commonjs(),
   ],

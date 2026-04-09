@@ -2,6 +2,17 @@
 
 This is a react library for implementing paystack payment gateway
 
+## Next.js support
+
+- Compatible with `next@^16` and `react@^18 || ^19`.
+- Must be used in a **Client Component** (Paystack requires the browser).
+
+```tsx
+'use client';
+
+import {PaystackButton} from 'react-paystack';
+```
+
 ## Demo
 
 ![Demo](React_App_01.png?raw=true "Demo Image")
@@ -63,7 +74,7 @@ Note that all 3 implementations produce the same results.
       return (
         <div>
             <button onClick={() => {
-                initializePayment(onSuccess, onClose)
+                initializePayment({ onSuccess, onClose })
             }}>Paystack Hooks Implementation</button>
         </div>
       );
@@ -205,7 +216,7 @@ import './App.css';
           </a>
         </header>
         <PaystackConsumer {...componentProps} >
-          {({initializePayment}) => <button onClick={() => initializePayment(handleSuccess, handleClose)}>Paystack Consumer Implementation</button>}
+          {({initializePayment}) => <button onClick={() => initializePayment()}>Paystack Consumer Implementation</button>}
         </PaystackConsumer>
       </div>
     );
@@ -258,4 +269,4 @@ Olusegun Ayeni.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
