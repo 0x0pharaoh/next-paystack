@@ -1,1 +1,2 @@
-export declare const callPaystackPop: (paystackArgs: Record<string, any>) => void;
+import type { PaystackInlineOptions } from './types';
+export declare const callPaystackPop: (paystackArgs: PaystackInlineOptions) => void;

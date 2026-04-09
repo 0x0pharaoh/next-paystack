@@ -1,4 +1,4 @@
-import {HookConfig, InitializePayment} from './types';
+import {HookConfig, InitializePayment, PaystackInlineOptions} from './types';
 import {callPaystackPop} from './paystack-actions';
 
 export default function usePaystackPayment(hookConfig: HookConfig): InitializePayment {
@@ -7,12 +7,15 @@ export default function usePaystackPayment(hookConfig: HookConfig): InitializePa
 
     const {
       publicKey,
+      firstName,
+      lastName,
       firstname,
       lastname,
       phone,
       email,
       amount,
       reference,
+      customerCode,
       metadata,
       currency = 'NGN',
       channels,
@@ -28,16 +31,21 @@ export default function usePaystackPayment(hookConfig: HookConfig): InitializePa
       connect_split,
       onBankTransferConfirmationPending,
     } = args;
-    const paystackArgs: Record<string, any> = {
+
+    const resolvedFirstName = firstName ?? firstname;
+    const resolvedLastName = lastName ?? lastname;
+
+    const paystackArgs: PaystackInlineOptions = {
       onSuccess: onSuccess ? onSuccess : () => null,
       onCancel: onClose ? onClose : () => null,
       key: publicKey,
       email,
       amount,
-      ...(firstname && {firstname}),
-      ...(lastname && {lastname}),
+      ...(resolvedFirstName && {firstName: resolvedFirstName}),
+      ...(resolvedLastName && {lastName: resolvedLastName}),
       ...(phone && {phone}),
-      ...(reference && {ref: reference}),
+      ...(customerCode && {customerCode}),
+      ...(reference && {reference}),
       ...(currency && {currency}),
       ...(channels && {channels}),
       ...(metadata && {metadata}),
