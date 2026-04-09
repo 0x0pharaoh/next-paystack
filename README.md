@@ -73,8 +73,7 @@ import type {PaystackProps, PaystackTransaction} from '@0x0pharaoh/next-paystack
 
 ## Attribution / lineage
 
-- `https://github.com/iamraphson/react-paystack` is derived from `https://github.com/0x0pharaoh/next-paystack`.
-- GitHub username and repo name match the URL (e.g. `0x0pharaoh/next-paystack`).
+- This package is derived from [iamraphson/react-paystack](https://github.com/iamraphson/react-paystack).
 
 ## License
 
